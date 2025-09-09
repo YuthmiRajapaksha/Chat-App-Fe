@@ -1,174 +1,37 @@
-// // // // import { useState } from "react";
-// // // // import FriendsList from "./FriendsList";
-// // // // import Chat from "./Chat";
-
-// // // // export default function ChatApp({ user }) {
-// // // //   const [friendId, setFriendId] = useState(null);
-
-// // // //   return (
-// // // //     <div style={{ display: "flex" }}>
-// // // //       <FriendsList user={user} onSelectFriend={setFriendId} />
-// // // //       <div style={{ flex: 1, padding: "10px" }}>
-// // // //         {friendId ? (
-// // // //           <Chat user={user} friendId={friendId} />
-// // // //         ) : (
-// // // //           <h3>Select a friend to start chatting</h3>
-// // // //         )}
-// // // //       </div>
-// // // //     </div>
-// // // //   );
-// // // // }
-
-
-// // // import { useState } from "react";
-// // // import FriendsList from "./FriendsList";
-// // // import Chat from "./Chat";
-// // // import SearchBar from "./SearchBar";
-
-// // // export default function ChatApp({ user }) {
-// // //   const [friendId, setFriendId] = useState(null);
-
-// // //   return (
-// // //     <div style={{ display: "flex" }}>
-// // //       <div style={{ width: "250px", borderRight: "1px solid gray", padding: "10px" }}>
-// // //         <SearchBar onSelectFriend={setFriendId} />
-// // //         <FriendsList user={user} onSelectFriend={setFriendId} />
-// // //       </div>
-// // //       <div style={{ flex: 1, padding: "10px" }}>
-// // //         {friendId ? (
-// // //           <Chat user={user} friendId={friendId} />
-// // //         ) : (
-// // //           <h3>Select or search a friend to start chatting</h3>
-// // //         )}
-// // //       </div>
-// // //     </div>
-// // //   );
-// // // }
-
-
-// // import { useState } from "react";
-// // import FriendsList from "./FriendsList";
-// // import Chat from "./Chat";
-// // import SearchBar from "./SearchBar";
-
-// // export default function ChatApp({ user }) {
-// //   const [friendId, setFriendId] = useState(null);
-// //   const [friendName, setFriendName] = useState(""); // keep username for display
-
-// //   const handleSelectFriend = (id, username) => {
-// //     setFriendId(id);
-// //     setFriendName(username);
-// //   };
-
-// //   return (
-// //     <div style={{ display: "flex", height: "100vh" }}>
-// //       <div style={{ width: "250px", borderRight: "1px solid gray", padding: "10px" }}>
-// //         <SearchBar onSelectFriend={handleSelectFriend} />
-// //         <FriendsList user={user} onSelectFriend={handleSelectFriend} />
-// //       </div>
-// //       <div style={{ flex: 1, padding: "10px" }}>
-// //         {friendId ? (
-// //           <Chat user={user} friendId={friendId} friendName={friendName} />
-// //         ) : (
-// //           <h3>Select or search a friend to start chatting</h3>
-// //         )}
-// //       </div>
-// //     </div>
-// //   );
-// // }
-
-
-// // import { useState } from "react";
-// // import FriendsList from "./FriendsList";
-// // import Chat from "./Chat";
-// // import SearchBar from "./SearchBar";
-
-// // export default function ChatApp({ user }) {
-// //   const [friendId, setFriendId] = useState(null);
-// //   const [friendName, setFriendName] = useState("");
-
-// //   const handleSelectFriend = (id, username) => {
-// //     setFriendId(id);
-// //     setFriendName(username);
-// //   };
-
-// //   return (
-// //     <div style={{ display: "flex", height: "100vh" }}>
-// //       <div style={{ width: "250px", borderRight: "1px solid gray", padding: "10px" }}>
-// //         <SearchBar onSelectFriend={handleSelectFriend} />
-// //         <FriendsList user={user} onSelectFriend={handleSelectFriend} />
-// //       </div>
-// //       <div style={{ flex: 1, padding: "10px" }}>
-// //         {friendId ? (
-// //           <Chat user={user} friendId={friendId} friendName={friendName} />
-// //         ) : (
-// //           <h3>Select or search a friend to start chatting</h3>
-// //         )}
-// //       </div>
-// //     </div>
-// //   );
-// // }
-// import { useState } from "react";
-// import FriendsList from "./FriendsList";
-// import Chat from "./Chat";
-
-// export default function ChatApp({ user }) {
-//   const [selectedFriendId, setSelectedFriendId] = useState(null);
-//   const [selectedFriendName, setSelectedFriendName] = useState("");
-
-//   return (
-//     <div style={{ display: "flex", height: "100vh" }}>
-//       <div style={{ width: "250px", borderRight: "1px solid gray", padding: "10px" }}>
-//         {/* <FriendsList
-//           user={user}
-//           onSelectFriend={(id, name) => {
-//             setSelectedFriendId(id);
-//             setSelectedFriendName(name);
-//           }}
-//         /> */}
-//         <FriendsList user={user} onSelectFriend={setFriendId} />
-
-//       </div>
-
-//       <div style={{ flex: 1, padding: "10px" }}>
-//         {selectedFriendId ? (
-//           <Chat
-//             user={user}
-//             friendId={selectedFriendId}
-//             friendName={selectedFriendName}
-//           />
-//         ) : (
-//           <h3>Select a friend to start chatting</h3>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
 
 import { useState } from "react";
+import { Box, Paper, Typography } from "@mui/material";
 import FriendsList from "./FriendsList";
 import Chat from "./Chat";
 
 export default function ChatApp({ user }) {
   const [friendId, setFriendId] = useState(null);
+  const [friendName, setFriendName] = useState("");
 
   return (
-    <div style={{ display: "flex", marginTop: "20px" }}>
-      {/* Left panel: Friends list */}
-      <div style={{ width: "250px", borderRight: "1px solid gray", padding: "10px" }}>
-        <h3>Welcome {user.username}</h3>
-        <FriendsList user={user} onSelectFriend={setFriendId} />
-      </div>
+    <Box sx={{ display: "flex", gap: 2, height: "600px" }}>
+      {/* Left panel */}
+      <Paper sx={{ width: 300, p: 2, display: "flex", flexDirection: "column", gap: 2 }}>
+         <Typography variant="h5" sx={{ fontWeight: "bold" }}>Friends</Typography>
+        <FriendsList
+          user={user}
+          onSelectFriend={(id, name) => {
+            setFriendId(id);
+            setFriendName(name);
+          }}
+        />
+      </Paper>
 
-      {/* Right panel: Chat */}
-      <div style={{ flex: 1, padding: "10px" }}>
+      {/* Right panel */}
+      <Box sx={{ flex: 1 }}>
         {friendId ? (
-          <Chat user={user} friendId={friendId} />
+          <Chat user={user} friendId={friendId} friendName={friendName} />
         ) : (
-          <h3>Select a friend to start chatting</h3>
+          <Paper sx={{ p: 4, textAlign: "center" }}>
+            <Typography variant="h6">Select a friend to start chatting</Typography>
+          </Paper>
         )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
