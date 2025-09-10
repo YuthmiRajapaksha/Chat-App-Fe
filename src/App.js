@@ -37,7 +37,7 @@ export default function App() {
           }}
         >
           <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 , color:"white"}}>
-            <Typography variant="h5">Welcome, {user.username}</Typography>
+            <Typography variant="h4">Welcome, {user.username}</Typography>
             <Button
               variant="outlined"
               color="error"

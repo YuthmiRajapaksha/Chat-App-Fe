@@ -50,7 +50,7 @@ export default function RegisterForm({ onRegister }) {
 
   return (
     <Paper elevation={6} sx={{ width: 400, p: 5, borderRadius: 3, bgcolor: "white" }}>
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography variant="h4" align="center" gutterBottom sx={{fontFamily:"poppins", fontWeight:"bold"}} >
         Register
       </Typography>
       <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>

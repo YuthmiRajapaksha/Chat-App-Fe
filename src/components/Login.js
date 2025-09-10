@@ -34,7 +34,7 @@ export default function Login({ onLogin }) {
       elevation={6}
       sx={{ width: 400, p: 5, borderRadius: 3, bgcolor: "white" }}
     >
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography variant="h4" align="center" gutterBottom sx={{fontFamily:"poppins", fontWeight:"bold"}}>
         Login
       </Typography>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
@@ -53,7 +53,7 @@ export default function Login({ onLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button variant="contained" size="large" onClick={handleLogin}>
+        <Button variant="contained" size="large"  onClick={handleLogin}>
           Login
         </Button>
       </Box>
